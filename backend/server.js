@@ -12,6 +12,13 @@ app.use("/api/jerseys", require("./routes/jerseyRoutes"));
 app.use("/api/orders", require("./routes/orderRoutes"));
 app.use("/api/custom-requests", require("./routes/customRoutes"));
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+const { notFound, errorHandler } = require("./middleware/errorHandler");
+
+app.use(notFound);
+app.use(errorHandler);
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });

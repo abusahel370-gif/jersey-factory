@@ -112,11 +112,19 @@ function JerseyCard({ jersey, onAdd }) {
         display:"flex", justifyContent:"center", alignItems:"center",
         padding:"28px 20px", minHeight:220, overflow:"hidden",
       }}>
-        <img src={jersey.img} alt={jersey.name} style={{
-          width:"100%", maxWidth:200, height:200, objectFit:"contain", display:"block",
-          transition:"transform .3s ease",
-          transform: hovered ? "scale(1.07)" : "scale(1)",
-        }} />
+        <img
+  src={jersey.image}
+  alt={jersey.name}
+  style={{
+    width: "100%",
+    maxWidth: 200,
+    height: 200,
+    objectFit: "contain",
+    display: "block",
+    transition: "transform .3s ease",
+    transform: hovered ? "scale(1.07)" : "scale(1)",
+  }}
+/>
       </div>
 
       <div style={{ padding:"16px 16px 18px", borderTop:"1px solid #eee" }}>
@@ -154,20 +162,43 @@ function LoginModal({ onClose, onLogin }) {
   const [passwordErr, setPasswordErr] = useState("");
   const [loading,     setLoading]     = useState(false);
 
-  const handleLogin = () => {
-    let valid = true;
-    if (!validateEmail(email)) { setEmailErr("Please enter a valid email address."); valid = false; } else { setEmailErr(""); }
-    if (!validatePassword(password)) { setPasswordErr("Password must be at least 6 characters."); valid = false; } else { setPasswordErr(""); }
-    if (!valid) return;
-    setLoading(true);
-    setTimeout(() => {
-      localStorage.setItem("jf_logged_in", "true");
-      localStorage.setItem("jf_email", email.trim());
-      setLoading(false);
-      onLogin(email.trim());
-      onClose();
-    }, 700);
-  };
+  const handleLogin = async () => {
+  let valid = true;
+
+  if (!validateEmail(email)) {
+    setEmailErr("Please enter a valid email address.");
+    valid = false;
+  } else {
+    setEmailErr("");
+  }
+
+  if (!validatePassword(password)) {
+    setPasswordErr("Password must be at least 6 characters.");
+    valid = false;
+  } else {
+    setPasswordErr("");
+  }
+
+  if (!valid) return;
+
+  setLoading(true);
+
+  const { data, error } =
+    await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
+
+  setLoading(false);
+
+  if (error) {
+    setEmailErr(error.message);
+    return;
+  }
+
+  onLogin(data.user.email);
+  onClose();
+};
 
   const handleKeyDown = (e) => { if (e.key === "Enter") handleLogin(); };
 
@@ -264,7 +295,14 @@ export default function App() {
   useEffect(() => {
     async function fetchJerseys() {
       const { data, error } = await supabase.from("jerseys").select("*");
-      if (!error && data) setJerseys(data);
+      if (!error && data) {
+  const formatted = data.map(item => ({
+    ...item,
+    img: item.image,
+  }));
+
+  setJerseys(formatted);
+}
     }
     fetchJerseys();
   }, []);
@@ -277,12 +315,12 @@ export default function App() {
 
   const handleAddToCart  = (jersey) => { setCartCount(c => c + 1); setCartItems(p => [...p, jersey]); };
   const handleRemoveItem = (i) => { setCartItems(p => p.filter((_,idx) => idx !== i)); setCartCount(c => c - 1); };
-  const handleLogout = () => {
-    localStorage.removeItem("jf_logged_in");
-    localStorage.removeItem("jf_email");
-    setLoggedIn(false);
-    setUserEmail("");
-  };
+  const handleLogout = async () => {
+  await supabase.auth.signOut();
+
+  setLoggedIn(false);
+  setUserEmail("");
+};
 
   const handleSubmitCustom = () => {
     if (!customName.trim() || !customNumber.trim()) return;
@@ -615,11 +653,11 @@ export default function App() {
 
               {/* Jersey grid using local images */}
               <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
-                {JERSEYS.map(j => (
-                  <div key={j.id} style={{background:"#fff"}}>
-                    <JerseyCard jersey={j} onAdd={handleAddToCart}/>
-                  </div>
-                ))}
+                {filteredJerseys.map(j => (
+  <div key={j.id} style={{background:"#fff"}}>
+    <JerseyCard jersey={j} onAdd={handleAddToCart}/>
+  </div>
+))}
               </div>
             </div>
           </section>
