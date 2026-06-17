@@ -678,38 +678,28 @@ export default function App() {
               </button>
             </div>
           </section>
-{/* ══ CUSTOM JERSEY ═══════════════════════════════════ */}
-        <section id="custom" style={{borderTop:"1px solid #eee",padding:"64px 24px",background:"#f9f9f9"}}>
-          <div style={{maxWidth:1300,margin:"0 auto"}}>
-            <div style={{textAlign:"center",marginBottom:48}}>
-              <span className="section-label">✏️ PERSONALISE YOUR KIT</span>
-              <h2 className="section-title">CREATE YOUR CUSTOM JERSEY</h2>
-              <p className="section-sub" style={{maxWidth:480,margin:"8px auto 0"}}>Your name. Your number. Any jersey. Ready in 3–5 days.</p>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}}>
-              <div style={{display:"flex",justifyContent:"center",alignItems:"flex-end",gap:0,height:400,position:"relative"}}>
-                <img src={messi} alt="Messi" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
-                <img src={ronaldo} alt="Ronaldo" style={{height:390,width:160,objectFit:"cover",objectPosition:"top",zIndex:2,position:"relative",margin:"0 -1px",boxShadow:"0 0 40px rgba(0,0,0,0.15)"}}/>
-                <img src={neymar} alt="Neymar" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
+
+          {/* ── BEST SELLERS STRIP ──────────────────────────── */}
+          <section style={{padding:"56px 24px",background:"#f9f9f9"}}>
+            <div style={{maxWidth:1300,margin:"0 auto"}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:28,flexWrap:"wrap",gap:12}}>
+                <div>
+                  <span className="section-label">🏆 TOP PICKS</span>
+                  <h2 className="section-title">BEST SELLERS</h2>
+                  <p className="section-sub">Our most-loved kits — ordered again and again</p>
+                </div>
+                <button onClick={() => scrollTo("shop","New")} style={{border:"2px solid #111",background:"transparent",color:"#111",padding:"10px 24px",fontSize:12,fontWeight:800,cursor:"pointer",letterSpacing:1,textTransform:"uppercase",fontFamily:"'Inter',sans-serif"}}>VIEW ALL →</button>
               </div>
-              <div style={{background:"#fff",border:"1.5px solid #eee",padding:"40px 32px"}}>
-                <h3 style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:26,fontWeight:900,color:"#111",marginBottom:24,letterSpacing:.3,textTransform:"uppercase"}}>Your Details</h3>
-                <div style={{marginBottom:14}}>
-                  <label style={{fontSize:11,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:"#888",display:"block",marginBottom:8}}>Your Name</label>
-                  <input className="input-field" type="text" placeholder="e.g. Rahul" value={customName} onChange={e => setCustomName(e.target.value)}/>
-                </div>
-                <div style={{marginBottom:24}}>
-                  <label style={{fontSize:11,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:"#888",display:"block",marginBottom:8}}>Jersey Number</label>
-                  <input className="input-field" type="number" placeholder="e.g. 7" value={customNumber} onChange={e => setCustomNumber(e.target.value)} min="1" max="99"/>
-                </div>
-                <button onClick={handleSubmitCustom} disabled={!customName.trim() || !customNumber.trim()} style={{width:"100%",border:"none",padding:"15px",fontSize:14,fontWeight:800,letterSpacing:1,background:orderSubmitted?"#25D366":"#111",color:"#fff",cursor:(!customName.trim()||!customNumber.trim())?"not-allowed":"pointer",opacity:(!customName.trim()||!customNumber.trim())?0.4:1,textTransform:"uppercase",fontFamily:"'Inter',sans-serif",transition:"background .3s, opacity .2s"}}>
-                  {orderSubmitted ? "✓ Opening WhatsApp…" : "💬 SUBMIT VIA WHATSAPP"}
-                </button>
-                <p style={{fontSize:12,color:"#aaa",marginTop:12,textAlign:"center"}}>Opens WhatsApp to confirm your custom order</p>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
+                {BEST_SELLERS.map(j => (
+                  <div key={j.id} style={{background:"#fff"}}>
+                    <JerseyCard jersey={j} onAdd={handleAddToCart}/>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+
           {/* ── WHY CHOOSE ──────────────────────────────────── */}
           <section style={{padding:"56px 24px",background:"#fff",borderTop:"1px solid #eee"}}>
             <div style={{maxWidth:1300,margin:"0 auto"}}>
@@ -798,6 +788,59 @@ export default function App() {
           )}
         </section>
 
+        {/* ══ CUSTOM JERSEY ═══════════════════════════════════ */}
+        <section id="custom" style={{borderTop:"1px solid #eee",padding:"64px 24px",background:"#f9f9f9"}}>
+          <div style={{maxWidth:1300,margin:"0 auto"}}>
+            <div style={{textAlign:"center",marginBottom:48}}>
+              <span className="section-label">✏️ PERSONALISE YOUR KIT</span>
+              <h2 className="section-title">CREATE YOUR CUSTOM JERSEY</h2>
+              <p className="section-sub" style={{maxWidth:480,margin:"8px auto 0"}}>Your name. Your number. Any jersey. Ready in 3–5 days.</p>
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}}>
+              <div style={{display:"flex",justifyContent:"center",alignItems:"flex-end",gap:0,height:400,position:"relative"}}>
+                <img src={messi} alt="Messi" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
+                <img src={ronaldo} alt="Ronaldo" style={{height:390,width:160,objectFit:"cover",objectPosition:"top",zIndex:2,position:"relative",margin:"0 -1px",boxShadow:"0 0 40px rgba(0,0,0,0.15)"}}/>
+                <img src={neymar} alt="Neymar" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
+              </div>
+              <div style={{background:"#fff",border:"1.5px solid #eee",padding:"40px 32px"}}>
+                <h3 style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:26,fontWeight:900,color:"#111",marginBottom:24,letterSpacing:.3,textTransform:"uppercase"}}>Your Details</h3>
+                <div style={{marginBottom:14}}>
+                  <label style={{fontSize:11,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:"#888",display:"block",marginBottom:8}}>Your Name</label>
+                  <input className="input-field" type="text" placeholder="e.g. Rahul" value={customName} onChange={e => setCustomName(e.target.value)}/>
+                </div>
+                <div style={{marginBottom:24}}>
+                  <label style={{fontSize:11,fontWeight:700,letterSpacing:1.5,textTransform:"uppercase",color:"#888",display:"block",marginBottom:8}}>Jersey Number</label>
+                  <input className="input-field" type="number" placeholder="e.g. 7" value={customNumber} onChange={e => setCustomNumber(e.target.value)} min="1" max="99"/>
+                </div>
+                <button onClick={handleSubmitCustom} disabled={!customName.trim() || !customNumber.trim()} style={{width:"100%",border:"none",padding:"15px",fontSize:14,fontWeight:800,letterSpacing:1,background:orderSubmitted?"#25D366":"#111",color:"#fff",cursor:(!customName.trim()||!customNumber.trim())?"not-allowed":"pointer",opacity:(!customName.trim()||!customNumber.trim())?0.4:1,textTransform:"uppercase",fontFamily:"'Inter',sans-serif",transition:"background .3s, opacity .2s"}}>
+                  {orderSubmitted ? "✓ Opening WhatsApp…" : "💬 SUBMIT VIA WHATSAPP"}
+                </button>
+                <p style={{fontSize:12,color:"#aaa",marginTop:12,textAlign:"center"}}>Opens WhatsApp to confirm your custom order</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ══ CONTACT ═════════════════════════════════════════ */}
+        <section id="contact" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px",textAlign:"center"}}>
+          <span className="section-label">REACH OUT</span>
+          <h2 className="section-title" style={{marginBottom:40}}>CONTACT US</h2>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:16,maxWidth:900,margin:"0 auto"}}>
+            {[
+              {icon:"📞",label:"Phone",value:"9363964260"},
+              {icon:"📧",label:"Email",value:"abusahel40@gmail.com"},
+              {icon:"📍",label:"Location",value:"Devala"},
+              {icon:"💬",label:"WhatsApp",value:"9363964260"},
+            ].map(({icon,label,value}) => (
+              <div key={label} style={{background:"#f9f9f9",border:"1.5px solid #eee",padding:"28px 18px"}}>
+                <div style={{fontSize:28,marginBottom:10}}>{icon}</div>
+                <p style={{fontSize:10,fontWeight:700,letterSpacing:2,textTransform:"uppercase",color:"#bbb",marginBottom:6}}>{label}</p>
+                <p style={{color:"#111",fontWeight:700,fontSize:14}}>{value}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ══ CART ════════════════════════════════════════════ */}
         <section id="cart" style={{background:"#f9f9f9",borderTop:"1px solid #eee",padding:"64px 24px"}}>
           <div style={{maxWidth:1300,margin:"0 auto"}}>
@@ -838,25 +881,6 @@ export default function App() {
                 </div>
               </>
             )}
-          </div>
-        </section>
-        {/* ══ CONTACT ═════════════════════════════════════════ */}
-        <section id="contact" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px",textAlign:"center"}}>
-          <span className="section-label">REACH OUT</span>
-          <h2 className="section-title" style={{marginBottom:40}}>CONTACT US</h2>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:16,maxWidth:900,margin:"0 auto"}}>
-            {[
-              {icon:"📞",label:"Phone",value:"9363964260"},
-              {icon:"📧",label:"Email",value:"abusahel40@gmail.com"},
-              {icon:"📍",label:"Location",value:"Devala"},
-              {icon:"💬",label:"WhatsApp",value:"9363964260"},
-            ].map(({icon,label,value}) => (
-              <div key={label} style={{background:"#f9f9f9",border:"1.5px solid #eee",padding:"28px 18px"}}>
-                <div style={{fontSize:28,marginBottom:10}}>{icon}</div>
-                <p style={{fontSize:10,fontWeight:700,letterSpacing:2,textTransform:"uppercase",color:"#bbb",marginBottom:6}}>{label}</p>
-                <p style={{color:"#111",fontWeight:700,fontSize:14}}>{value}</p>
-              </div>
-            ))}
           </div>
         </section>
 
