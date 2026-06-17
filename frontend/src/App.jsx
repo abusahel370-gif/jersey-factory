@@ -805,110 +805,26 @@ export default function App() {
               </div>
             </div>
           </section>
-
-       {/* ══ CONTACT ═════════════════════════════════════════ */}
-<section id="contact" style={{background:C.bgCard, borderTop:`1px solid ${C.border}`, padding:"64px 24px"}}>
-  <div style={{maxWidth:1300, margin:"0 auto"}}>
-
-    {/* Header */}
-    <div style={{textAlign:"center", marginBottom:48}}>
-      <span style={{
-        fontFamily:"'DM Sans',sans-serif",
-        fontSize:10, fontWeight:700, letterSpacing:3.5,
-        textTransform:"uppercase", color:C.accent,
-        marginBottom:8, display:"block",
-      }}>📞 REACH OUT</span>
-      <h2 style={{
-        fontFamily:"'Bebas Neue',sans-serif",
-        fontSize:"clamp(36px,5vw,60px)", fontWeight:400,
-        color:C.textPri, margin:"0 0 8px", letterSpacing:1, lineHeight:1,
-      }}>CONTACT US</h2>
-      <p style={{fontSize:14, color:C.textSec, fontFamily:"'DM Sans',sans-serif"}}>
-        Our team is available 7 days a week — call, email, or just WhatsApp us.
-      </p>
-    </div>
-
-    {/* Info Cards */}
-    <div style={{
-      display:"grid",
-      gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",
-      gap:12, maxWidth:960, margin:"0 auto 40px",
-    }}>
-      {[
-        { icon:"📞", label:"Phone",     value:"93639 64260",          href:"tel:9363964260" },
-        { icon:"📧", label:"Email",     value:"abusahel40@gmail.com", href:"mailto:abusahel40@gmail.com" },
-        { icon:"📍", label:"Location",  value:"Devala",               href:null },
-        { icon:"⏰", label:"Hours",     value:"7 Days, 9AM–9PM",      href:null },
-      ].map(({icon,label,value,href}) => (
-        <div key={label} style={{
-          background:C.bg, border:`1.5px solid ${C.border}`,
-          padding:"24px 20px", textAlign:"center",
-          transition:"border-color .2s, transform .2s",
-          cursor: href ? "pointer" : "default",
-        }}
-        onMouseEnter={e => { e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.transform = "translateY(-3px)"; }}
-        onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.transform = "translateY(0)"; }}
-        onClick={() => href && window.open(href, "_blank", "noopener,noreferrer")}
-        >
-          <div style={{fontSize:26, marginBottom:12}}>{icon}</div>
-          <p style={{
-            fontSize:9, fontWeight:700, letterSpacing:2.5,
-            textTransform:"uppercase", color:C.accent,
-            marginBottom:6, fontFamily:"'DM Sans',sans-serif",
-          }}>{label}</p>
-          <p style={{
-            color:C.textPri, fontWeight:700, fontSize:14,
-            fontFamily:"'DM Sans',sans-serif", lineHeight:1.4,
-          }}>{value}</p>
-        </div>
-      ))}
-    </div>
-
-    {/* CTA Buttons */}
-    <div style={{display:"flex", gap:12, justifyContent:"center", flexWrap:"wrap"}}>
-      <a href="tel:9363964260" style={{
-        display:"inline-flex", alignItems:"center", gap:8,
-        background:"transparent", border:`1.5px solid ${C.accent}`,
-        color:C.accent, padding:"13px 28px",
-        fontFamily:"'DM Sans',sans-serif", fontWeight:800, fontSize:12,
-        letterSpacing:1.5, textDecoration:"none", textTransform:"uppercase",
-        transition:"background .2s",
-      }}
-      onMouseEnter={e => e.currentTarget.style.background = "rgba(245,166,35,0.1)"}
-      onMouseLeave={e => e.currentTarget.style.background = "transparent"}
-      >
-        📞 CALL US
-      </a>
-      <a href="https://wa.me/919363964260" target="_blank" rel="noopener noreferrer" style={{
-        display:"inline-flex", alignItems:"center", gap:8,
-        background:"#25D366", border:"none",
-        color:"#fff", padding:"13px 28px",
-        fontFamily:"'DM Sans',sans-serif", fontWeight:800, fontSize:12,
-        letterSpacing:1.5, textDecoration:"none", textTransform:"uppercase",
-        transition:"background .2s",
-      }}
-      onMouseEnter={e => e.currentTarget.style.background = "#1fb858"}
-      onMouseLeave={e => e.currentTarget.style.background = "#25D366"}
-      >
-        💬 WHATSAPP US
-      </a>
-      <a href="mailto:abusahel40@gmail.com" style={{
-        display:"inline-flex", alignItems:"center", gap:8,
-        background:"transparent", border:`1.5px solid ${C.border}`,
-        color:C.textSec, padding:"13px 28px",
-        fontFamily:"'DM Sans',sans-serif", fontWeight:800, fontSize:12,
-        letterSpacing:1.5, textDecoration:"none", textTransform:"uppercase",
-        transition:"border-color .2s, color .2s",
-      }}
-      onMouseEnter={e => { e.currentTarget.style.borderColor = C.accent; e.currentTarget.style.color = C.accent; }}
-      onMouseLeave={e => { e.currentTarget.style.borderColor = C.border; e.currentTarget.style.color = C.textSec; }}
-      >
-        📧 EMAIL US
-      </a>
-    </div>
-
-  </div>
-</section>
+{/* ══ CONTACT ═════════════════════════════════════════ */}
+        <section id="contact" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px",textAlign:"center"}}>
+          <span className="section-label">REACH OUT</span>
+          <h2 className="section-title" style={{marginBottom:40}}>CONTACT US</h2>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:16,maxWidth:900,margin:"0 auto"}}>
+            {[
+              {icon:"📞",label:"Phone",value:"9363964260"},
+              {icon:"📧",label:"Email",value:"abusahel40@gmail.com"},
+              {icon:"📍",label:"Location",value:"Devala"},
+              {icon:"💬",label:"WhatsApp",value:"9363964260"},
+            ].map(({icon,label,value}) => (
+              <div key={label} style={{background:"#f9f9f9",border:"1.5px solid #eee",padding:"28px 18px"}}>
+                <div style={{fontSize:28,marginBottom:10}}>{icon}</div>
+                <p style={{fontSize:10,fontWeight:700,letterSpacing:2,textTransform:"uppercase",color:"#bbb",marginBottom:6}}>{label}</p>
+                <p style={{color:"#111",fontWeight:700,fontSize:14}}>{value}</p>
+              </div>
+            ))}
+          </div>
+        </section>                    
+```
 {/* ── CUSTOMER REVIEWS ────────────────────────────── */}
           <section style={{padding:"56px 24px",background:"#f9f9f9",borderTop:"1px solid #eee"}}>
             <div style={{maxWidth:1300,margin:"0 auto"}}>
