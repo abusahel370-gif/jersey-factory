@@ -83,20 +83,22 @@ function JerseyCard({ jersey, onAdd }) {
 
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background:"#fff",
-        border: hovered ? "50px solid #111" : "10px solid #eee",
-        borderRadius:0,
-        overflow:"hidden",
-        position:"relative",
-        transition:"transform .22s ease, border-color .22s ease, box-shadow .22s ease",
-        transform: hovered ? "translateY(-4px)" : "translateY(0)",
-        boxShadow: hovered ? "0 12px 32px rgba(0,0,0,0.13)" : "0 2px 8px rgba(0,0,0,0.06)",
-        cursor:"pointer",
-      }}
-    >
+  onMouseEnter={() => setHovered(true)}
+  onMouseLeave={() => setHovered(false)}
+  style={{
+    background: "#fff",
+    border: "1.5px solid #eee",         // ← always light border, no black
+    borderRadius: 4,                     // ← slight rounding like reference
+    overflow: "hidden",
+    position: "relative",
+    transition: "transform .22s ease, box-shadow .22s ease",
+    transform: hovered ? "translateY(-4px)" : "translateY(0)",
+    boxShadow: hovered
+      ? "0 8px 24px rgba(0,0,0,0.12)"   // ← soft shadow on hover
+      : "0 2px 8px rgba(0,0,0,0.06)",
+    cursor: "pointer",
+  }}
+>
       {jersey.badge && (
         <span style={{
           position:"absolute", top:12, left:12, zIndex:2,
