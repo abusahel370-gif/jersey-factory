@@ -142,7 +142,7 @@ function JerseyCard({ jersey, onAdd }) {
             <span style={{fontSize:22,fontWeight:800,color:"#111"}}>{jersey.price.toLocaleString()}</span>
           </div>
           <button onClick={handleAdd} style={{
-            border:"2px solid #111", borderRadius:0, padding:"9px 18px",
+            border:"1px solid #d5d2d2", borderRadius:0, padding:"9px 18px",
             fontSize:12, fontWeight:800, cursor:"pointer", color: added ? "#fff" : "#111",
             letterSpacing:.5, textTransform:"uppercase",
             transition:"background .25s, color .25s",
