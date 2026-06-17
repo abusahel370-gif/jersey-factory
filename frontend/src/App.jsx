@@ -661,6 +661,38 @@ export default function App() {
               </div>
             </div>
           </section>
+
+          {/* ══ SHOP SECTION ════════════════════════════════════ */}
+        <section id="shop" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px"}}>
+          <div style={{marginBottom:32}}>
+            <span className="section-label">International Jerseys</span>
+            <h2 className="section-title">ALL JERSEYS</h2>
+          </div>
+          <div style={{position:"relative",marginBottom:36,maxWidth:480}}>
+            <span style={{position:"absolute",left:12,top:"50%",transform:"translateY(-50%)",fontSize:16,color:"#aaa"}}>🔍</span>
+            <input className="search-bar" style={{paddingLeft:40}} type="text" placeholder="Search by team or jersey name…" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}/>
+            {searchQuery && (
+              <button onClick={() => setSearchQuery("")} style={{position:"absolute",right:0,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",color:"#aaa",cursor:"pointer",fontSize:20}}>×</button>
+            )}
+          </div>
+          {filteredJerseys.length > 0 ? (
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
+              {filteredJerseys.map(j => (
+                <div key={j.id} style={{background:"#fff"}}>
+                  <JerseyCard jersey={j} onAdd={handleAddToCart}/>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{textAlign:"center",padding:"60px 24px",background:"#f9f9f9",border:"1.5px solid #eee"}}>
+              <div style={{fontSize:40,marginBottom:12}}>🔍</div>
+              <p style={{color:"#888",fontSize:16,marginBottom:6}}>No jerseys found for "<strong style={{color:"#111"}}>{searchQuery}</strong>"</p>
+              <p style={{color:"#bbb",fontSize:13}}>Try searching by country or team name</p>
+            </div>
+          )}
+        </section>
+
+        
           {/* ── PROMO BANNER: CUSTOM JERSEY ─────────────────── */}
           <section style={{background:"#111",padding:"64px 24px",textAlign:"center"}}>
             <div style={{maxWidth:700,margin:"0 auto"}}>
@@ -777,68 +809,6 @@ export default function App() {
             </div>
           </section>
 
-          {/* ── CUSTOMER REVIEWS ────────────────────────────── */}
-          <section style={{padding:"56px 24px",background:"#f9f9f9",borderTop:"1px solid #eee"}}>
-            <div style={{maxWidth:1300,margin:"0 auto"}}>
-              <div style={{textAlign:"center",marginBottom:40}}>
-                <span className="section-label">⭐ REAL CUSTOMERS</span>
-                <h2 className="section-title">WHAT FANS ARE SAYING</h2>
-                <p className="section-sub">Over 10,000 happy fans across India</p>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:20}}>
-                {REVIEWS.map((r,i) => (
-                  <div key={i} className="review-card" style={{background:"#fff",border:"1.5px solid #eee",padding:"24px 20px"}}>
-                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:12}}>
-                      <div style={{display:"flex",alignItems:"center",gap:10}}>
-                        <span style={{fontSize:28}}>{r.avatar}</span>
-                        <div>
-                          <div style={{fontWeight:700,fontSize:14,color:"#111"}}>{r.name}</div>
-                          <div style={{fontSize:11,color:"#999",marginTop:2}}>📍 {r.location}</div>
-                        </div>
-                      </div>
-                      <Stars count={r.rating}/>
-                    </div>
-                    <p style={{color:"#555",lineHeight:1.65,fontSize:13}}>"{r.text}"</p>
-                    <div style={{marginTop:14,borderTop:"1px solid #f0f0f0",paddingTop:10}}>
-                      <span style={{fontSize:10,color:"#bbb",fontWeight:700,letterSpacing:1,textTransform:"uppercase"}}>Verified Purchase ✓</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-        </div>
-
-        {/* ══ SHOP SECTION ════════════════════════════════════ */}
-        <section id="shop" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px"}}>
-          <div style={{marginBottom:32}}>
-            <span className="section-label">International Jerseys</span>
-            <h2 className="section-title">ALL JERSEYS</h2>
-          </div>
-          <div style={{position:"relative",marginBottom:36,maxWidth:480}}>
-            <span style={{position:"absolute",left:12,top:"50%",transform:"translateY(-50%)",fontSize:16,color:"#aaa"}}>🔍</span>
-            <input className="search-bar" style={{paddingLeft:40}} type="text" placeholder="Search by team or jersey name…" value={searchQuery} onChange={e => setSearchQuery(e.target.value)}/>
-            {searchQuery && (
-              <button onClick={() => setSearchQuery("")} style={{position:"absolute",right:0,top:"50%",transform:"translateY(-50%)",background:"none",border:"none",color:"#aaa",cursor:"pointer",fontSize:20}}>×</button>
-            )}
-          </div>
-          {filteredJerseys.length > 0 ? (
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
-              {filteredJerseys.map(j => (
-                <div key={j.id} style={{background:"#fff"}}>
-                  <JerseyCard jersey={j} onAdd={handleAddToCart}/>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div style={{textAlign:"center",padding:"60px 24px",background:"#f9f9f9",border:"1.5px solid #eee"}}>
-              <div style={{fontSize:40,marginBottom:12}}>🔍</div>
-              <p style={{color:"#888",fontSize:16,marginBottom:6}}>No jerseys found for "<strong style={{color:"#111"}}>{searchQuery}</strong>"</p>
-              <p style={{color:"#bbb",fontSize:13}}>Try searching by country or team name</p>
-            </div>
-          )}
-        </section>
-
         {/* ══ CONTACT ═════════════════════════════════════════ */}
         <section id="contact" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px",textAlign:"center"}}>
           <span className="section-label">REACH OUT</span>
@@ -915,7 +885,37 @@ export default function App() {
         </footer>
 
       </div>
-
+{/* ── CUSTOMER REVIEWS ────────────────────────────── */}
+          <section style={{padding:"56px 24px",background:"#f9f9f9",borderTop:"1px solid #eee"}}>
+            <div style={{maxWidth:1300,margin:"0 auto"}}>
+              <div style={{textAlign:"center",marginBottom:40}}>
+                <span className="section-label">⭐ REAL CUSTOMERS</span>
+                <h2 className="section-title">WHAT FANS ARE SAYING</h2>
+                <p className="section-sub">Over 10,000 happy fans across India</p>
+              </div>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:20}}>
+                {REVIEWS.map((r,i) => (
+                  <div key={i} className="review-card" style={{background:"#fff",border:"1.5px solid #eee",padding:"24px 20px"}}>
+                    <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:12}}>
+                      <div style={{display:"flex",alignItems:"center",gap:10}}>
+                        <span style={{fontSize:28}}>{r.avatar}</span>
+                        <div>
+                          <div style={{fontWeight:700,fontSize:14,color:"#111"}}>{r.name}</div>
+                          <div style={{fontSize:11,color:"#999",marginTop:2}}>📍 {r.location}</div>
+                        </div>
+                      </div>
+                      <Stars count={r.rating}/>
+                    </div>
+                    <p style={{color:"#555",lineHeight:1.65,fontSize:13}}>"{r.text}"</p>
+                    <div style={{marginTop:14,borderTop:"1px solid #f0f0f0",paddingTop:10}}>
+                      <span style={{fontSize:10,color:"#bbb",fontWeight:700,letterSpacing:1,textTransform:"uppercase"}}>Verified Purchase ✓</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        </div>
       {showLogin && (
         <LoginModal onClose={() => setShowLogin(false)} onLogin={(email) => { setLoggedIn(true); setUserEmail(email); }}/>
       )}
