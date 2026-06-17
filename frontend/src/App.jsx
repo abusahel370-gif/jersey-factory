@@ -716,9 +716,9 @@ export default function App() {
             </div>
             <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}}>
               <div style={{display:"flex",justifyContent:"center",alignItems:"flex-end",gap:0,height:400,position:"relative"}}>
-                <img src={messi} alt="Messi" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
-                <img src={ronaldo} alt="Ronaldo" style={{height:390,width:160,objectFit:"cover",objectPosition:"top",zIndex:2,position:"relative",margin:"0 -1px",boxShadow:"0 0 40px rgba(0,0,0,0.15)"}}/>
-                <img src={neymar} alt="Neymar" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
+                <img src={messi} alt="Messi" style={{height:360,width:220,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
+                <img src={ronaldo} alt="Ronaldo" style={{height:380,width:200,objectFit:"cover",objectPosition:"top",zIndex:2,position:"relative",margin:"0 -1px",boxShadow:"0 0 40px rgba(0,0,0,0.15)"}}/>
+                <img src={neymar} alt="Neymar" style={{height:360,width:220,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
               </div>
               <div style={{background:"#fff",border:"1.5px solid #eee",padding:"40px 32px"}}>
                 <h3 style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:26,fontWeight:900,color:"#111",marginBottom:24,letterSpacing:.3,textTransform:"uppercase"}}>Your Details</h3>
