@@ -144,7 +144,7 @@ function JerseyCard({ jersey, onAdd }) {
             <span style={{fontSize:22,fontWeight:800,color:"#111"}}>{jersey.price.toLocaleString()}</span>
           </div>
           <button onClick={handleAdd} style={{
-            border:"1px solid #d5d2d2", borderRadius:0, padding:"9px 18px",
+            border:"2px solid #111", borderRadius:0, padding:"9px 18px",
             fontSize:12, fontWeight:800, cursor:"pointer", color: added ? "#fff" : "#111",
             letterSpacing:.5, textTransform:"uppercase",
             transition:"background .25s, color .25s",
@@ -452,6 +452,16 @@ export default function App() {
           display:flex; flex-direction:column;
           justify-content:flex-end; padding:24px;
         }
+
+        @media (max-width: 768px) {
+          .custom-grid { grid-template-columns: 1fr !important; }
+          .custom-player-imgs { display: none !important; }
+          nav { display: none !important; }
+          .hero-banner { padding: 48px 16px 56px !important; }
+          .filter-row { flex-wrap: wrap !important; }
+          .jersey-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)) !important; }
+          .contact-grid { grid-template-columns: 1fr 1fr !important; }
+        }
       `}</style>
 
       <div style={{minHeight:"100vh",background:"#fff",color:"#111",fontFamily:"'Inter','Segoe UI',sans-serif",overflowX:"hidden"}}>
@@ -552,7 +562,7 @@ export default function App() {
           {/* ── HERO PROMOTIONAL BANNER ─────────────────────── */}
           <div
             key={heroBanner}
-            className="banner-transition"
+             className="banner-transition hero-banner"
             style={{
               background: banner.bg,
               padding:"72px 24px 80px",
@@ -644,7 +654,7 @@ export default function App() {
                   <h2 className="section-title">JERSEYS</h2>
                   <p className="section-sub">Official national team kits — wear your colours with pride</p>
                 </div>
-                <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+                <div className="filter-row" style={{display:"flex",gap:10,flexWrap:"wrap"}}>
                   <button className="filter-btn">Product Type ▾</button>
                   <button className="filter-btn">Price ▾</button>
                   <button className="filter-btn">Size ▾</button>
@@ -654,7 +664,7 @@ export default function App() {
               </div>
 
               {/* Jersey grid using local images */}
-              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
+              <div className="jersey-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
                 {filteredJerseys.map(j => (
   <div key={j.id} style={{background:"#fff"}}>
     <JerseyCard jersey={j} onAdd={handleAddToCart}/>
@@ -663,7 +673,8 @@ export default function App() {
               </div>
             </div>
           </section>
-{/* ── PROMO BANNER: CUSTOM JERSEY ─────────────────── */}
+
+          {/* ── PROMO BANNER: CUSTOM JERSEY ─────────────────── */}
           <section style={{background:"#111",padding:"64px 24px",textAlign:"center"}}>
             <div style={{maxWidth:700,margin:"0 auto"}}>
               <span className="section-label" style={{color:"rgba(255,255,255,0.4)"}}>✏️ PERSONALISE YOUR KIT</span>
@@ -693,7 +704,7 @@ export default function App() {
             )}
           </div>
           {filteredJerseys.length > 0 ? (
-            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
+            <div className="jersey-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
               {filteredJerseys.map(j => (
                 <div key={j.id} style={{background:"#fff"}}>
                   <JerseyCard jersey={j} onAdd={handleAddToCart}/>
@@ -716,8 +727,8 @@ export default function App() {
               <h2 className="section-title">CREATE YOUR CUSTOM JERSEY</h2>
               <p className="section-sub" style={{maxWidth:480,margin:"8px auto 0"}}>Your name. Your number. Any jersey. Ready in 3–5 days.</p>
             </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}}>
-              <div style={{display:"flex",justifyContent:"center",alignItems:"flex-end",gap:0,height:400,position:"relative"}}>
+            <div className="custom-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}}>
+              <div className="custom-player-imgs" style={{display:"flex",justifyContent:"center",alignItems:"flex-end",gap:0,height:400,position:"relative"}}>
                 <img src={messi} alt="Messi" style={{height:380,width:220,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
                 <img src={ronaldo} alt="Ronaldo" style={{height:380,width:200,objectFit:"cover",objectPosition:"top",zIndex:2,position:"relative",margin:"0 -1px",boxShadow:"0 0 40px rgba(0,0,0,0.15)"}}/>
                 <img src={neymar} alt="Neymar" style={{height:380,width:220,objectFit:"cover",objectPosition:"top",filter:"brightness(0.9)"}}/>
@@ -807,11 +818,12 @@ export default function App() {
               </div>
             </div>
           </section>
-{/* ══ CONTACT ═════════════════════════════════════════ */}
+
+        {/* ══ CONTACT ═════════════════════════════════════════ */}
         <section id="contact" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px",textAlign:"center"}}>
           <span className="section-label">REACH OUT</span>
           <h2 className="section-title" style={{marginBottom:40}}>CONTACT US</h2>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:16,maxWidth:900,margin:"0 auto"}}>
+          <div className="contact-grid" style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",gap:16,maxWidth:900,margin:"0 auto"}}>
             {[
               {icon:"📞",label:"Phone",value:"9363964260"},
               {icon:"📧",label:"Email",value:"abusahel40@gmail.com"},
@@ -825,8 +837,8 @@ export default function App() {
               </div>
             ))}
           </div>
-        </section>                    
-```
+        </section>
+
 {/* ── CUSTOMER REVIEWS ────────────────────────────── */}
           <section style={{padding:"56px 24px",background:"#f9f9f9",borderTop:"1px solid #eee"}}>
             <div style={{maxWidth:1300,margin:"0 auto"}}>
