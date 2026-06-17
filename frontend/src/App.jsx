@@ -692,7 +692,7 @@ export default function App() {
           )}
         </section>
 
-        
+
           {/* ── PROMO BANNER: CUSTOM JERSEY ─────────────────── */}
           <section style={{background:"#111",padding:"64px 24px",textAlign:"center"}}>
             <div style={{maxWidth:700,margin:"0 auto"}}>
@@ -871,20 +871,6 @@ export default function App() {
             )}
           </div>
         </section>
-
-        {/* ══ FOOTER ══════════════════════════════════════════ */}
-        <footer style={{borderTop:"1px solid #eee",background:"#111",padding:"36px 24px",textAlign:"center"}}>
-          <div style={{maxWidth:1300,margin:"0 auto"}}>
-            <div style={{display:"flex",alignItems:"baseline",justifyContent:"center",marginBottom:12}}>
-              <span style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:20,fontWeight:900,color:"#e84747",letterSpacing:2,textTransform:"uppercase"}}>JERSEY</span>
-              <span style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:20,fontWeight:400,color:"rgba(255,255,255,0.5)",letterSpacing:3}}>&nbsp;FACTORY</span>
-            </div>
-            <p style={{color:"rgba(255,255,255,0.25)",fontSize:12,marginBottom:6}}>Premium football jerseys for fans across India</p>
-            <p style={{color:"rgba(255,255,255,0.15)",fontSize:11}}>© {new Date().getFullYear()} Jersey Factory · Devala · abusahel40@gmail.com</p>
-          </div>
-        </footer>
-
-      </div>
 {/* ── CUSTOMER REVIEWS ────────────────────────────── */}
           <section style={{padding:"56px 24px",background:"#f9f9f9",borderTop:"1px solid #eee"}}>
             <div style={{maxWidth:1300,margin:"0 auto"}}>
@@ -911,10 +897,23 @@ export default function App() {
                       <span style={{fontSize:10,color:"#bbb",fontWeight:700,letterSpacing:1,textTransform:"uppercase"}}>Verified Purchase ✓</span>
                     </div>
                   </div>
-                ))}
+                ))} 
               </div>
             </div>
           </section>
+          {/* ══ FOOTER ══════════════════════════════════════════ */}
+        <footer style={{borderTop:"1px solid #eee",background:"#111",padding:"36px 24px",textAlign:"center"}}>
+          <div style={{maxWidth:1300,margin:"0 auto"}}>
+            <div style={{display:"flex",alignItems:"baseline",justifyContent:"center",marginBottom:12}}>
+              <span style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:20,fontWeight:900,color:"#e84747",letterSpacing:2,textTransform:"uppercase"}}>JERSEY</span>
+              <span style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:20,fontWeight:400,color:"rgba(255,255,255,0.5)",letterSpacing:3}}>&nbsp;FACTORY</span>
+            </div>
+            <p style={{color:"rgba(255,255,255,0.25)",fontSize:12,marginBottom:6}}>Premium football jerseys for fans across India</p>
+            <p style={{color:"rgba(255,255,255,0.15)",fontSize:11}}>© {new Date().getFullYear()} Jersey Factory · Devala · abusahel40@gmail.com</p>
+          </div>
+        </footer>
+
+      </div>
         </div>
       {showLogin && (
         <LoginModal onClose={() => setShowLogin(false)} onLogin={(email) => { setLoggedIn(true); setUserEmail(email); }}/>
