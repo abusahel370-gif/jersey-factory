@@ -87,7 +87,7 @@ function JerseyCard({ jersey, onAdd }) {
       onMouseLeave={() => setHovered(false)}
       style={{
         background:"#fff",
-        border: hovered ? "2px solid #111" : "2px solid #eee",
+        border: hovered ? "50px solid #111" : "10px solid #eee",
         borderRadius:0,
         overflow:"hidden",
         position:"relative",
@@ -676,27 +676,6 @@ export default function App() {
                 onClick={() => scrollTo("custom","Custom")}>
                 CUSTOMISE NOW →
               </button>
-            </div>
-          </section>
-
-          {/* ── BEST SELLERS STRIP ──────────────────────────── */}
-          <section style={{padding:"56px 24px",background:"#f9f9f9"}}>
-            <div style={{maxWidth:1300,margin:"0 auto"}}>
-              <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-end",marginBottom:28,flexWrap:"wrap",gap:12}}>
-                <div>
-                  <span className="section-label">🏆 TOP PICKS</span>
-                  <h2 className="section-title">BEST SELLERS</h2>
-                  <p className="section-sub">Our most-loved kits — ordered again and again</p>
-                </div>
-                <button onClick={() => scrollTo("shop","New")} style={{border:"2px solid #111",background:"transparent",color:"#111",padding:"10px 24px",fontSize:12,fontWeight:800,cursor:"pointer",letterSpacing:1,textTransform:"uppercase",fontFamily:"'Inter',sans-serif"}}>VIEW ALL →</button>
-              </div>
-              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(260px,1fr))",gap:1,background:"#eee"}}>
-                {BEST_SELLERS.map(j => (
-                  <div key={j.id} style={{background:"#fff"}}>
-                    <JerseyCard jersey={j} onAdd={handleAddToCart}/>
-                  </div>
-                ))}
-              </div>
             </div>
           </section>
 
