@@ -737,8 +737,7 @@ export default function App() {
               </div>
             </div>
           </section>
-
-          {/* ── PROMO: CUSTOM ───────────────────────────────── */}
+{/* ── PROMO: CUSTOM ───────────────────────────────── */}
           <section style={{background:C.bgCard,borderTop:`1px solid ${C.border}`,borderBottom:`1px solid ${C.border}`,padding:"64px 24px",textAlign:"center",position:"relative",overflow:"hidden"}}>
             <div style={{position:"absolute",inset:0,backgroundImage:`repeating-linear-gradient(135deg,rgba(245,166,35,0.02) 0px,rgba(245,166,35,0.02) 2px,transparent 2px,transparent 28px)`,pointerEvents:"none"}}/>
             <div style={{maxWidth:700,margin:"0 auto",position:"relative"}}>
@@ -753,6 +752,48 @@ export default function App() {
             </div>
           </section>
 
+        {/* ══ CUSTOM JERSEY ═══════════════════════════════════ */}
+        <section id="custom" style={{borderTop:`1px solid ${C.border}`,padding:"64px 24px",background:C.bgCard}}>
+          <div style={{maxWidth:1300,margin:"0 auto"}}>
+            <div style={{textAlign:"center",marginBottom:48}}>
+              <span className="jf-section-label">✏️ PERSONALISE YOUR KIT</span>
+              <h2 className="jf-section-title">CREATE YOUR CUSTOM JERSEY</h2>
+              <p style={{fontSize:14,color:C.textSec,maxWidth:480,margin:"8px auto 0",fontFamily:"'DM Sans',sans-serif"}}>Your name. Your number. Any jersey. Ready in 3–5 days.</p>
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}}>
+              <div style={{display:"flex",justifyContent:"center",alignItems:"flex-end",gap:0,height:400,position:"relative"}}>
+                <div style={{position:"absolute",inset:0,background:`radial-gradient(ellipse at bottom, rgba(245,166,35,0.08) 0%, transparent 70%)`,pointerEvents:"none"}}/>
+                <img src={messi} alt="Messi" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.85) saturate(0.9)"}}/>
+                <img src={ronaldo} alt="Ronaldo" style={{height:390,width:160,objectFit:"cover",objectPosition:"top",zIndex:2,position:"relative",margin:"0 -1px",boxShadow:`0 0 40px rgba(245,166,35,0.15)`,filter:"brightness(0.9)"}}/>
+                <img src={neymar} alt="Neymar" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.85) saturate(0.9)"}}/>
+              </div>
+              <div style={{background:C.bg,border:`1.5px solid ${C.border}`,padding:"40px 32px"}}>
+                <h3 style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:28,fontWeight:400,color:C.textPri,marginBottom:24,letterSpacing:1}}>YOUR DETAILS</h3>
+                <div style={{marginBottom:14}}>
+                  <label style={{fontSize:10,fontWeight:700,letterSpacing:2,textTransform:"uppercase",color:C.textSec,display:"block",marginBottom:8,fontFamily:"'DM Sans',sans-serif"}}>Your Name</label>
+                  <input className="jf-input" type="text" placeholder="e.g. Rahul" value={customName} onChange={e => setCustomName(e.target.value)}/>
+                </div>
+                <div style={{marginBottom:24}}>
+                  <label style={{fontSize:10,fontWeight:700,letterSpacing:2,textTransform:"uppercase",color:C.textSec,display:"block",marginBottom:8,fontFamily:"'DM Sans',sans-serif"}}>Jersey Number</label>
+                  <input className="jf-input" type="number" placeholder="e.g. 7" value={customNumber} onChange={e => setCustomNumber(e.target.value)} min="1" max="99"/>
+                </div>
+                <button onClick={handleSubmitCustom} disabled={!customName.trim() || !customNumber.trim()} style={{
+                  width:"100%",border:"none",padding:"16px",
+                  fontSize:13,fontWeight:800,letterSpacing:1.5,
+                  background: orderSubmitted ? "#25D366" : C.accent,
+                  color: orderSubmitted ? "#fff" : "#111",
+                  cursor:(!customName.trim()||!customNumber.trim())?"not-allowed":"pointer",
+                  opacity:(!customName.trim()||!customNumber.trim())?0.35:1,
+                  textTransform:"uppercase",fontFamily:"'DM Sans',sans-serif",
+                  transition:"background .3s, opacity .2s",
+                }}>
+                  {orderSubmitted ? "✓ Opening WhatsApp…" : "💬 SUBMIT VIA WHATSAPP"}
+                </button>
+                <p style={{fontSize:12,color:C.textSec,marginTop:12,textAlign:"center",fontFamily:"'DM Sans',sans-serif"}}>Opens WhatsApp to confirm your custom order</p>
+              </div>
+            </div>
+          </div>
+        </section>
           {/* ── WHY CHOOSE ──────────────────────────────────── */}
           <section style={{padding:"56px 24px",background:C.bg}}>
             <div style={{maxWidth:1300,margin:"0 auto"}}>
@@ -897,49 +938,6 @@ export default function App() {
               <p style={{color:C.border,fontSize:13,fontFamily:"'DM Sans',sans-serif"}}>Try searching by country or team name</p>
             </div>
           )}
-        </section>
-
-        {/* ══ CUSTOM JERSEY ═══════════════════════════════════ */}
-        <section id="custom" style={{borderTop:`1px solid ${C.border}`,padding:"64px 24px",background:C.bgCard}}>
-          <div style={{maxWidth:1300,margin:"0 auto"}}>
-            <div style={{textAlign:"center",marginBottom:48}}>
-              <span className="jf-section-label">✏️ PERSONALISE YOUR KIT</span>
-              <h2 className="jf-section-title">CREATE YOUR CUSTOM JERSEY</h2>
-              <p style={{fontSize:14,color:C.textSec,maxWidth:480,margin:"8px auto 0",fontFamily:"'DM Sans',sans-serif"}}>Your name. Your number. Any jersey. Ready in 3–5 days.</p>
-            </div>
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:48,alignItems:"center"}}>
-              <div style={{display:"flex",justifyContent:"center",alignItems:"flex-end",gap:0,height:400,position:"relative"}}>
-                <div style={{position:"absolute",inset:0,background:`radial-gradient(ellipse at bottom, rgba(245,166,35,0.08) 0%, transparent 70%)`,pointerEvents:"none"}}/>
-                <img src={messi} alt="Messi" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.85) saturate(0.9)"}}/>
-                <img src={ronaldo} alt="Ronaldo" style={{height:390,width:160,objectFit:"cover",objectPosition:"top",zIndex:2,position:"relative",margin:"0 -1px",boxShadow:`0 0 40px rgba(245,166,35,0.15)`,filter:"brightness(0.9)"}}/>
-                <img src={neymar} alt="Neymar" style={{height:360,width:200,objectFit:"cover",objectPosition:"top",filter:"brightness(0.85) saturate(0.9)"}}/>
-              </div>
-              <div style={{background:C.bg,border:`1.5px solid ${C.border}`,padding:"40px 32px"}}>
-                <h3 style={{fontFamily:"'Bebas Neue',sans-serif",fontSize:28,fontWeight:400,color:C.textPri,marginBottom:24,letterSpacing:1}}>YOUR DETAILS</h3>
-                <div style={{marginBottom:14}}>
-                  <label style={{fontSize:10,fontWeight:700,letterSpacing:2,textTransform:"uppercase",color:C.textSec,display:"block",marginBottom:8,fontFamily:"'DM Sans',sans-serif"}}>Your Name</label>
-                  <input className="jf-input" type="text" placeholder="e.g. Rahul" value={customName} onChange={e => setCustomName(e.target.value)}/>
-                </div>
-                <div style={{marginBottom:24}}>
-                  <label style={{fontSize:10,fontWeight:700,letterSpacing:2,textTransform:"uppercase",color:C.textSec,display:"block",marginBottom:8,fontFamily:"'DM Sans',sans-serif"}}>Jersey Number</label>
-                  <input className="jf-input" type="number" placeholder="e.g. 7" value={customNumber} onChange={e => setCustomNumber(e.target.value)} min="1" max="99"/>
-                </div>
-                <button onClick={handleSubmitCustom} disabled={!customName.trim() || !customNumber.trim()} style={{
-                  width:"100%",border:"none",padding:"16px",
-                  fontSize:13,fontWeight:800,letterSpacing:1.5,
-                  background: orderSubmitted ? "#25D366" : C.accent,
-                  color: orderSubmitted ? "#fff" : "#111",
-                  cursor:(!customName.trim()||!customNumber.trim())?"not-allowed":"pointer",
-                  opacity:(!customName.trim()||!customNumber.trim())?0.35:1,
-                  textTransform:"uppercase",fontFamily:"'DM Sans',sans-serif",
-                  transition:"background .3s, opacity .2s",
-                }}>
-                  {orderSubmitted ? "✓ Opening WhatsApp…" : "💬 SUBMIT VIA WHATSAPP"}
-                </button>
-                <p style={{fontSize:12,color:C.textSec,marginTop:12,textAlign:"center",fontFamily:"'DM Sans',sans-serif"}}>Opens WhatsApp to confirm your custom order</p>
-              </div>
-            </div>
-          </div>
         </section>
 
         {/* ══ CART ════════════════════════════════════════════ */}
