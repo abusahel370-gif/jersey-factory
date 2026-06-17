@@ -661,7 +661,22 @@ export default function App() {
               </div>
             </div>
           </section>
-
+{/* ── PROMO BANNER: CUSTOM JERSEY ─────────────────── */}
+          <section style={{background:"#111",padding:"64px 24px",textAlign:"center"}}>
+            <div style={{maxWidth:700,margin:"0 auto"}}>
+              <span className="section-label" style={{color:"rgba(255,255,255,0.4)"}}>✏️ PERSONALISE YOUR KIT</span>
+              <h2 style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:"clamp(32px,5vw,60px)",fontWeight:900,color:"#fff",marginBottom:12,letterSpacing:-.5}}>
+                CUSTOM NAME & NUMBER
+              </h2>
+              <p style={{color:"rgba(255,255,255,0.55)",fontSize:15,marginBottom:32,lineHeight:1.7}}>
+                Get your name and number printed on any jersey. Ready in 3–5 days, delivered across India.
+              </p>
+              <button className="primary-btn" style={{background:"#e8c547",color:"#111",fontSize:14,letterSpacing:1.5}}
+                onClick={() => scrollTo("custom","Custom")}>
+                CUSTOMISE NOW →
+              </button>
+            </div>
+          </section>
           {/* ══ SHOP SECTION ════════════════════════════════════ */}
         <section id="shop" style={{maxWidth:1300,margin:"0 auto",padding:"64px 24px"}}>
           <div style={{marginBottom:32}}>
@@ -691,24 +706,6 @@ export default function App() {
             </div>
           )}
         </section>
-
-
-          {/* ── PROMO BANNER: CUSTOM JERSEY ─────────────────── */}
-          <section style={{background:"#111",padding:"64px 24px",textAlign:"center"}}>
-            <div style={{maxWidth:700,margin:"0 auto"}}>
-              <span className="section-label" style={{color:"rgba(255,255,255,0.4)"}}>✏️ PERSONALISE YOUR KIT</span>
-              <h2 style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:"clamp(32px,5vw,60px)",fontWeight:900,color:"#fff",marginBottom:12,letterSpacing:-.5}}>
-                CUSTOM NAME & NUMBER
-              </h2>
-              <p style={{color:"rgba(255,255,255,0.55)",fontSize:15,marginBottom:32,lineHeight:1.7}}>
-                Get your name and number printed on any jersey. Ready in 3–5 days, delivered across India.
-              </p>
-              <button className="primary-btn" style={{background:"#e8c547",color:"#111",fontSize:14,letterSpacing:1.5}}
-                onClick={() => scrollTo("custom","Custom")}>
-                CUSTOMISE NOW →
-              </button>
-            </div>
-          </section>
           {/* ══ CUSTOM JERSEY ═══════════════════════════════════ */}
         <section id="custom" style={{borderTop:"1px solid #eee",padding:"64px 24px",background:"#f9f9f9"}}>
           <div style={{maxWidth:1300,margin:"0 auto"}}>
@@ -828,7 +825,7 @@ export default function App() {
             ))}
           </div>
         </section>
-        
+
 {/* ── CUSTOMER REVIEWS ────────────────────────────── */}
           <section style={{padding:"56px 24px",background:"#f9f9f9",borderTop:"1px solid #eee"}}>
             <div style={{maxWidth:1300,margin:"0 auto"}}>
