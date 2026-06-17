@@ -828,49 +828,7 @@ export default function App() {
             ))}
           </div>
         </section>
-
-        {/* ══ CART ════════════════════════════════════════════ */}
-        <section id="cart" style={{background:"#f9f9f9",borderTop:"1px solid #eee",padding:"64px 24px"}}>
-          <div style={{maxWidth:1300,margin:"0 auto"}}>
-            <span className="section-label">YOUR SELECTION</span>
-            <h2 className="section-title" style={{marginBottom:32}}>
-              SHOPPING CART{cartCount > 0 && <span style={{color:"#e84747"}}> ({cartCount})</span>}
-            </h2>
-            {cartItems.length === 0 ? (
-              <div style={{textAlign:"center",padding:"56px 24px",background:"#fff",border:"1.5px solid #eee"}}>
-                <div style={{fontSize:44,marginBottom:14}}>🛒</div>
-                <p style={{color:"#aaa",fontSize:16,marginBottom:18}}>Your cart is empty.</p>
-                <button className="primary-btn" onClick={() => scrollTo("shop","New")}>BROWSE JERSEYS</button>
-              </div>
-            ) : (
-              <>
-                <div style={{display:"flex",flexDirection:"column",gap:12}}>
-                  {cartItems.map((item,idx) => (
-                    <div key={idx} style={{display:"flex",alignItems:"center",gap:20,background:"#fff",padding:"16px 20px",border:"1.5px solid #eee"}}>
-                      <img src={item.img} alt={item.name} style={{width:72,height:72,objectFit:"contain",background:"#f5f5f5",padding:4}}/>
-                      <div style={{flex:1}}>
-                        <p style={{fontSize:10,color:"#bbb",letterSpacing:2,textTransform:"uppercase",marginBottom:3}}>{item.team}</p>
-                        <h3 style={{color:"#111",fontWeight:700,fontSize:15,marginBottom:3}}>{item.name}</h3>
-                        <p style={{color:"#111",fontWeight:800,fontSize:16}}>₹{item.price.toLocaleString()}</p>
-                      </div>
-                      <button onClick={() => handleRemoveItem(idx)} style={{background:"transparent",color:"#cc0000",border:"1.5px solid #eee",padding:"7px 14px",cursor:"pointer",fontWeight:700,fontSize:12,letterSpacing:.5,textTransform:"uppercase"}}>REMOVE</button>
-                    </div>
-                  ))}
-                </div>
-                <div style={{marginTop:20,background:"#fff",border:"1.5px solid #eee",padding:"24px",display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:16}}>
-                  <div>
-                    <p style={{color:"#888",fontSize:12,marginBottom:4,textTransform:"uppercase",letterSpacing:1}}>{cartItems.length} item{cartItems.length>1?"s":""}</p>
-                    <p style={{fontFamily:"'Barlow Condensed',sans-serif",fontSize:30,fontWeight:900,color:"#111"}}>Total: ₹{cartTotal.toLocaleString()}</p>
-                  </div>
-                  <a href={`https://wa.me/919363964260?text=${waMsg}`} target="_blank" rel="noopener noreferrer"
-                    style={{background:"#25D366",color:"#fff",padding:"14px 28px",fontWeight:800,fontSize:13,textDecoration:"none",display:"inline-flex",alignItems:"center",gap:8,letterSpacing:.5,textTransform:"uppercase"}}>
-                    💬 CHECKOUT ON WHATSAPP
-                  </a>
-                </div>
-              </>
-            )}
-          </div>
-        </section>
+        
 {/* ── CUSTOMER REVIEWS ────────────────────────────── */}
           <section style={{padding:"56px 24px",background:"#f9f9f9",borderTop:"1px solid #eee"}}>
             <div style={{maxWidth:1300,margin:"0 auto"}}>
